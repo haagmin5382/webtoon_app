@@ -12,7 +12,7 @@ class App extends StatelessWidget {
   // 위젯은 key라는 걸 가지고 있고 ID처럼 쓰인다.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       home: HomeScreen(),
     );
   }
