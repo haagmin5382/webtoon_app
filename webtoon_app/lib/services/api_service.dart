@@ -22,7 +22,7 @@ class ApiService {
       for (var webtoon in webtoons) {
         final toon = WebtoonModel.fromJson(webtoon);
         webtoonInstances.add(toon);
-        print(webtoon);
+        // print(webtoon);
       }
       return webtoonInstances;
     }
