@@ -53,6 +53,7 @@ class HomeScreen extends StatelessWidget {
         // ListView.builder는 사용자가 보고 있는 아이템만 build한다 (메모리를 절약하기위해)
         // print(index); // 스크롤을 넘기면 print가 계속 찍히는 것을 볼 수 있다. (메모리를 절약했다!)
         var webtoon = snapshot.data![index];
+
         return Webtoon(
             title: webtoon.title, thumb: webtoon.thumb, id: webtoon.id);
       },
