@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:webtoon_app/models/webtoon_model.dart';
 import 'package:webtoon_app/services/api_service.dart';
+import 'package:webtoon_app/widgets/webtoon_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
@@ -52,36 +53,8 @@ class HomeScreen extends StatelessWidget {
         // ListView.builder는 사용자가 보고 있는 아이템만 build한다 (메모리를 절약하기위해)
         // print(index); // 스크롤을 넘기면 print가 계속 찍히는 것을 볼 수 있다. (메모리를 절약했다!)
         var webtoon = snapshot.data![index];
-        return Column(children: [
-          Container(
-            width: 250,
-            clipBehavior: Clip.hardEdge,
-            // 모서리가 둥글게 안되는 이유는 clipBehavior를 설정안해서 그렇다
-            // clipBehavior는 자식의 부모 영역 침범을 제어하는 방법이다.
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                boxShadow: [
-                  BoxShadow(
-                      blurRadius: 5,
-                      offset: const Offset(5, 5),
-                      color: Colors.black.withOpacity(0.7))
-                ]),
-            child: Image.network(
-              webtoon.thumb,
-              headers: const {
-                "User-Agent":
-                    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36",
-              },
-            ),
-          ),
-          const SizedBox(height: 10),
-          Text(
-            webtoon.title,
-            style: const TextStyle(
-              fontSize: 22,
-            ),
-          )
-        ]);
+        return Webtoon(
+            title: webtoon.title, thumb: webtoon.thumb, id: webtoon.id);
       },
 
       separatorBuilder: (context, index) => const SizedBox(
